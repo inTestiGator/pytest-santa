@@ -11,7 +11,6 @@ pytest-cov = "*"
 pylint = "*"
 flake8 = "*"
 hypothesis = "*"
-v = {editable = true,version = "*"}
 
 [packages]
 requests = "*"
