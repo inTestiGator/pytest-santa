@@ -11,9 +11,11 @@ pytest-cov = "*"
 pylint = "*"
 flake8 = "*"
 hypothesis = "*"
+v = {editable = true,version = "*"}
 
 [packages]
 requests = "*"
+pathlib = "*"
 
 [requires]
 python_version = "3.6"
