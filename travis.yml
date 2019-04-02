@@ -1,0 +1,66 @@
+# use Java and non-root
+dist: trusty
+sudo: false
+language: Java
+jdk: oraclejdk8
+
+# ignore the virtualenv that Travis creates
+env:
+  global:
+    - PIPENV_VENV_IN_PROJECT=1
+    - PIPENV_IGNORE_VIRTUALENVS=1
+
+# install the dependencies
+before_install:
+  # install mdl for linting
+  - gem install mdl
+  # download gradle as a zip file
+  - wget https://services.gradle.org/distributions/gradle-4.6-bin.zip
+  - unzip -d $HOME gradle-4.6-bin.zip
+  # delete the downloaded file
+  - rm -rf gradle-4.6-bin.zip
+  # add gradle bin to path at the beginning to ensure it overwrites old gradle
+  - export PATH="$HOME/gradle-4.6/bin:$PATH"
+  # switch to Python 3.6.3 globally, install python dependencies
+  - pyenv global 3.6.3
+  - pip install --upgrade pip
+  - pip install proselint
+  - pip install pipenv
+  # do not allow Travis to use standard error for debugging purposes
+  - unset _JAVA_OPTIONS
+  # install dev dependencies with pipenv
+  - pipenv install --dev --three
+
+# cache to improve build speed
+before_cache:
+  - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
+  - rm -fr $HOME/.gradle/caches/*/plugin-resolution/
+cache:
+  directories:
+    - $HOME/.pip-cache/
+    - $HOME/.gradle/caches/
+    - $HOME/.gradle/wrapper/
+
+# delete any cached version of GatorGrader and require a fresh installation
+before_script:
+  - rm -rf $HOME/.local/share/gatorgrader
+
+# run checks on a student's Markdown writing through GatorGrader
+# run checks on the README file with mdl and proselint
+# run checks on a student's Python code GatorGrader
+# run checks on a student's Markdown writing through GatorGrader
+# note: "gradle grade" will install GatorGrader and run all checks
+script:
+  # lint the assignment's documentation
+  - mdl README.md
+  # Python: run and lint the program
+  - pipenv run pytest
+  - pipenv run python3 termfrequency/compute_tf_cookbook.py inputs/input.txt
+  - pipenv run flake8 termfrequency
+  - pipenv run pylint termfrequency
+  - pipenv run flake8 tests
+  - pipenv run pylint tests
+  # Java: see build.gradle
+  - gradle --version
+  # GatorGrader: see config/gatorgrader.yml
+  - gradle grade
