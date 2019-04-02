@@ -1,3 +1,4 @@
+"""Run script for termfrequency"""
 # !/usr/bin/env python
 import sys
 import termfrequency
