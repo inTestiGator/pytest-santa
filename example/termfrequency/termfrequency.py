@@ -1,7 +1,6 @@
 """Compute term frequencies for an input file using a cookbook style"""
 # !/usr/bin/env python
 
-import sys
 import re
 import operator
 import string
@@ -14,6 +13,8 @@ from abc import ABCMeta
 # pylint: disable=W1623
 # pylint: disable=too-few-public-methods
 from typing import Dict, List, Tuple
+
+
 class TFExercise:
     """This is the abstract base class,
     it is meant to be extended by other classes"""
