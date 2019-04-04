@@ -1,8 +1,7 @@
 # use Java and non-root
 dist: trusty
 sudo: false
-language: Java
-jdk: oraclejdk8
+language: Python
 
 # ignore the virtualenv that Travis creates
 env:
