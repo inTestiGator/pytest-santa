@@ -11,6 +11,7 @@ pytest-cov = "*"
 pylint = "*"
 flake8 = "*"
 hypothesis = "*"
+pytest-sugar = "*"
 
 [packages]
 requests = "*"
