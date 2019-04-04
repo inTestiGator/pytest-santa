@@ -3,12 +3,12 @@
 import subprocess
 import pytest
 
-from termfrequency import termfrequency
+from termfrequency import cp_termfrequency
 
 
 def test_read_file_populates_data_0():
     """ Checks that the reading of the small text file works """
-    storage_manager = termfrequency.DataStorageManager("inputs/input.txt")
+    storage_manager = cp_termfrequency.DataStorageManager("inputs/input.txt")
     word_list = storage_manager.words()
     assert word_list is not None
     assert len(word_list) == 12
@@ -16,7 +16,7 @@ def test_read_file_populates_data_0():
 
 def test_DataStorageManager_return_info():
     """ Checks that the info() works """
-    storage_manager = termfrequency.DataStorageManager("inputs/input.txt")
+    storage_manager = cp_termfrequency.DataStorageManager("inputs/input.txt")
     word = storage_manager.info()
     assert word == "DataStorageManager: My major data structure is a str"
 
@@ -24,14 +24,14 @@ def test_DataStorageManager_return_info():
 def test_StopWordManager_stop_word():
     """ Checks that the stop_word works by passing in a list of stop words"""
     word = ["able", "about", "across"]
-    stopword_manager = termfrequency.StopWordManager()
+    stopword_manager = cp_termfrequency.StopWordManager()
     word_test = stopword_manager.is_stop_word(word)
     assert word_test is False
 
 
 def test_StopWordManager_info():
     """ Checks that the info() works """
-    stopword_manager = termfrequency.StopWordManager()
+    stopword_manager = cp_termfrequency.StopWordManager()
     return_msg = stopword_manager.info()
     assert return_msg == "StopWordManager: My major data structure is a list"
 
@@ -39,7 +39,7 @@ def test_StopWordManager_info():
 def test_WordFrequencyManager_frequent_count():
     """ Checks that the count() works by putting in uncounted list"""
     words = ["tiger", "frequency", "frequency", "frequency"]
-    frequency_manager = termfrequency.WordFrequencyManager()
+    frequency_manager = cp_termfrequency.WordFrequencyManager()
     for w in words:
         freq_word = frequency_manager.increment_count(w)
     assert freq_word == {"tiger": 1, "frequency": 3}
@@ -48,7 +48,7 @@ def test_WordFrequencyManager_frequent_count():
 def test_WordFrequencyManager_frequent_sort():
     """ Checks that the sorted() works by putting in unsorted list"""
     words = ["tiger", "frequency", "frequency", "frequency"]
-    frequency_manager = termfrequency.WordFrequencyManager()
+    frequency_manager = cp_termfrequency.WordFrequencyManager()
     for w in words:
         frequency_manager.increment_count(w)
     sorted_word = frequency_manager.sorted()
@@ -57,14 +57,14 @@ def test_WordFrequencyManager_frequent_sort():
 
 def test_WordFrequencyManager_info():
     """ Checks that the info() works """
-    frequency_manager = termfrequency.WordFrequencyManager()
+    frequency_manager = cp_termfrequency.WordFrequencyManager()
     return_msg = frequency_manager.info()
     assert return_msg == "WordFrequencyManager: My major data structure is a dict"
 
 
 def test_WordFrequencyController_run():
     """ Checks that the run() works by asserting the output equals to the expected"""
-    frequency_controller = termfrequency.WordFrequencyController(
+    frequency_controller = cp_termfrequency.WordFrequencyController(
         "inputs/input.txt"
     )
     word_freqs = frequency_controller.run()
@@ -83,7 +83,7 @@ def test_WordFrequencyController_run():
 def test_main():
     """Capture program's output to check if it's right"""
     result = subprocess.run(
-        ["python3", "termfrequency/termfrequency.py", "inputs/input.txt"],
+        ["python3", "termfrequency/runtermfreq.py", "inputs/input.txt"],
         stdout=subprocess.PIPE,
     )
     output = result.stdout.decode("utf-8")
@@ -101,7 +101,7 @@ def test_main():
 )
 def test_WordFrequencyManager_frequent_count_parametrize(input_list, expected_count):
     """ Checks that the count() works adopting parametrize testing"""
-    frequency_manager = termfrequency.WordFrequencyManager()
+    frequency_manager = cp_termfrequency.WordFrequencyManager()
     for w in input_list:
         freq_word = frequency_manager.increment_count(w)
     for w in freq_word:
