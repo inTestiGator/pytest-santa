@@ -1,5 +1,5 @@
 [run]
 # omit the tests for test coverage monitoring
-omit=tests/*
+omit=tests/*, example/tests/*
 # run modules in src
-include=src/*.py
+include=src/*.py, example/termfrequency/stopwords/*.py
