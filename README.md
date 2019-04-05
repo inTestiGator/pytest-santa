@@ -1,5 +1,11 @@
 # pytest-santa
 
+[![Build Status](https://travis-ci.com/inTestiGator/pytest-santa.svg?branch=master)]
+(https://travis-ci.com/inTestiGator/pytest-santa)
+
+
+
+
 This plugin collects function argument types using
 [MonkeyType](https://github.com/Instagram/MonkeyType) and then generates test
 data by using [Hypothesis](https://hypothesis.works/) and

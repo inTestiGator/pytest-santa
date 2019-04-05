@@ -15,6 +15,7 @@ env:
     - PIPENV_IGNORE_VIRTUALENVS=1
     - LANG=en_US.UTF-8
     - LC_ALL=en_US.UTF-8
+    - CODECOV_TOKEN="ffd8962e-2fa3-4e31-8101-f096c37284e1"
 
 before_install:
   - gem install mdl
