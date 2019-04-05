@@ -16,8 +16,8 @@ from typing import Dict, List, Tuple
 
 
 class TFExercise:
-    """This is the abstract base class, it is meant to be extended by other
-    classes"""
+    """This is the abstract base class,
+    it is meant to be extended by other classes"""
 
     __metaclass__ = ABCMeta
 
