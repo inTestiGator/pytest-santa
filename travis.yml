@@ -1,19 +1,39 @@
-dist: xenial   # required for Python >= 3.7
+dist: xenial
 language: python
 python:
-  - "3.7"
-  - "3.7-dev"  # 3.7 development branch
-  - "3.8-dev"  # 3.8 development branch
-  - "nightly"  # nightly build
+  - "3.6"
 
-virtualenv:
-    system_site_packages: true
+cache:
+  directories:
+    - $HOME/.pip-cache/
+
+# ignore the virtualenv that Travis creates
+# setup a secure login to CodeCov
+env:
+  global:
+    - PIPENV_VENV_IN_PROJECT=1
+    - PIPENV_IGNORE_VIRTUALENVS=1
+    - LANG=en_US.UTF-8
+    - LC_ALL=en_US.UTF-8
+
+before_install:
+  - gem install mdl
+notifications:
+  email: never
 
 # command to install dependencies
-  install:
-    - pip install -r requirements.txt
-    - pip install .
-# command to run tests
-  script: pytest
+install:
+  - pip install --upgrade pip
+  - pip install --upgrade pipenv
+  - pipenv install --dev
+script:
+  - shopt -s globstar
+  - pipenv run pytest tests --cov-config pytest.cov --cov
+  - pipenv run black **/*.py --check
+  - pipenv run flake8 **/*.py
+  - pipenv run pylint **/*.py
+  - mdl README.md
 
-install: pip install --user -r requirements.txt
+# report coverage information to CodeCov
+after_success:
+  - pipenv run codecov
