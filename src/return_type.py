@@ -1,7 +1,7 @@
 import sqlite3
 
 
-def make_query(table, module, qualname, limit: int):
+def make_query(table, module, qualname, limit):
     raw_query = """
     SELECT
         module, qualname, arg_types, return_type, yield_type
@@ -9,7 +9,7 @@ def make_query(table, module, qualname, limit: int):
     WHERE
         module == ?
     """.format(table=table)
-    values = None
+    values = module
     if qualname is not None:
         raw_query += " AND qualname LIKE ? || '%'"
         values.append(qualname)
@@ -21,3 +21,15 @@ def make_query(table, module, qualname, limit: int):
     """
     values.append(limit)
     return raw_query, values
+
+
+def return_type():
+    dbFilename = "monkeytype.sqlite3"
+    conn = sqlite3.connect(dbFilename)
+    cur = conn.cursor()
+    type = make_query()
+    # TODO: connect to database
+    cur.execute("SELECT * from " + table)
+    rows = cur.fetchall()
+    for row in rows:
+        print(row)
