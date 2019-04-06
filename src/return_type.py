@@ -1,5 +1,9 @@
 import sqlite3
 
+# TODO: Enable the function to find path instead of manually type in path
+# TODO: How to parse the value returned by query.
+# TODO: How to only return one value in query
+
 # def make_query(table, module, qualname, limit):
 #     raw_query = """
 #     SELECT
