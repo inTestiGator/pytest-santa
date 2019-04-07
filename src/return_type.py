@@ -2,7 +2,6 @@ import sqlite3
 
 # TODO: Enable the function to find path instead of manually type in path
 # TODO: How to parse the value returned by query.
-# TODO: How to only return one value in query
 
 # def make_query(table, module, qualname, limit):
 #     raw_query = """
@@ -25,30 +24,14 @@ import sqlite3
 #     values.append(limit)
 #     return raw_query, values
 
-
-def return_type(table, module, qualname=None, limit=None):
-    raw_query = """
-    SELECT
-        module, qualname, arg_types, return_type, yield_type
-    FROM {table}
-    WHERE
-        module == ?
-    """.format(table=table)
-    cur = conn.cursor()
-    cur.execute(raw_query)
-    rows = cur.fetchall()
-    for row in rows:
-        print(row)
-
-
 def return_type_short(table, function):
     query = "SELECT arg_types from " + table + " WHERE qualname == " + function
     print(query)
     cur = conn.cursor()
     cur.execute(query)
     rows = cur.fetchall()
-    for row in rows:
-        print(row)
+    # print the first row
+    print(rows[0])
 
 
 if __name__ == '__main__':
