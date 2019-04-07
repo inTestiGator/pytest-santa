@@ -1,6 +1,6 @@
 import sqlite3
 
-# TODO: Enable the function to find path instead of manually type in path
+# TODO: need a function or file to configure the path of database
 # TODO: How to parse the value returned by query.
 
 # def make_query(table, module, qualname, limit):
@@ -24,14 +24,15 @@ import sqlite3
 #     values.append(limit)
 #     return raw_query, values
 
+
 def return_type_short(table, function):
     query = "SELECT arg_types from " + table + " WHERE qualname == " + function
-    print(query)
     cur = conn.cursor()
     cur.execute(query)
     rows = cur.fetchall()
     # print the first row
     print(rows[0])
+    return rows[0]
 
 
 if __name__ == '__main__':
