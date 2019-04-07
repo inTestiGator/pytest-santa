@@ -2,7 +2,6 @@ import sqlite3
 import json
 
 # TODO: need a function or file to configure the path of database
-# TODO: add exception if there is no input type
 # TODO: can it handle types like List[str]?
 
 # def make_query(table, module, qualname, limit):
@@ -30,6 +29,7 @@ table = "monkeytype_call_traces"
 
 
 def return_type(function):
+    """The function connects the database and make queries"""
     dbFilename = "example/monkeytype.sqlite3"
     query = "SELECT DISTINCT arg_types from " + table + " WHERE qualname == " + function
     try:
@@ -48,7 +48,7 @@ def return_type(function):
             return types
     except sqlite3.Error as e:
         print("Database error: %s" % e)
-    except Exception as e:
+    except Exception as e:  # pylint: disable=W0703
         print("Exception in _query: %s" % e)
     finally:
         if conn:
