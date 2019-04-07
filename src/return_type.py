@@ -25,7 +25,8 @@ import sqlite3
 #     return raw_query, values
 
 
-def return_type_short(table, function):
+def return_type_short(function):
+    table = "monkeytype_call_traces"
     query = "SELECT arg_types from " + table + " WHERE qualname == " + function
     cur = conn.cursor()
     cur.execute(query)
@@ -39,4 +40,4 @@ if __name__ == '__main__':
     dbFilename = "example/termfrequency/monkeytype.sqlite3"
     conn = sqlite3.connect(dbFilename)
     # return_type("monkeytype_call_traces", "termfrequency")
-    return_type_short("monkeytype_call_traces", "\"StopWordManager.is_stop_word\"")
+    return_type_short("\"StopWordManager.is_stop_word\"")

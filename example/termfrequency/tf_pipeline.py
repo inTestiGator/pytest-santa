@@ -13,6 +13,8 @@ import string
 
 
 from typing import Dict, List, Tuple
+
+
 def read_file(path_to_file: str) -> str:
     """
     Takes a path to a file and returns the entire
