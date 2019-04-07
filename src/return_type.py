@@ -1,7 +1,8 @@
+"""This module returns provides function to return the parameters and types of a function"""
 import sqlite3
 import json
 
-# TODO: need a function or file to configure the path of database, and module
+# TODO: need a function or file to configure the path of database
 # TODO: can it handle types like List[str]?
 
 table = "monkeytype_call_traces"
