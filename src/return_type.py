@@ -34,9 +34,7 @@ def get_output_type(function, module):
         row = connect_database_query(query)
         dict_row = json.loads(row[0])  # convert the string into dictionary
         # print(dict_row.keys())  # return the parameter
-        types = {}
-        for k, v in dict_row.items():
-            print(v["qualname"])
+        types = dict_row['qualname']
         return types  # return the parameter and its type in a dict type
     except Exception as e:  # pylint: disable=W0703
         print("Exception in _query: %s" % e)
@@ -59,10 +57,7 @@ def get_input_type(function, module):
 
 
 if __name__ == "__main__":
-    # return_type("monkeytype_call_traces", "termfrequency")
-    # types_isstopwords = return_type(function="\"StopWordManager.is_stop_word\"")
     # types_sorted = get_input_type(function="sort", module="termfrequency.tf_pipeline")
-    # test_return = get_input_type(function="sortedddd", module="termfrequency.tf_pipeline")
     types_sorted_output = get_output_type(function="StopWordManager.is_stop_word", module="termfrequency.tf_objectoriented")
     # print(test_return)
     # print(types_sorted)
