@@ -34,6 +34,7 @@ script:
   - pipenv run flake8 **/*.py
   - pipenv run pylint **/*.py
   - mdl README.md
+  - pipenv run python3 example/termfrequency/runtermfreq.py example/inputs/input.txt
 
 # report coverage information to CodeCov
 after_success:
