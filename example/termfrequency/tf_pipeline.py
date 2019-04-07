@@ -12,7 +12,8 @@ import string
 #
 
 
-def read_file(path_to_file):
+from typing import Dict, List, Tuple
+def read_file(path_to_file: str) -> str:
     """
     Takes a path to a file and returns the entire
     contents of the file as a string
@@ -22,7 +23,7 @@ def read_file(path_to_file):
     return data
 
 
-def filter_chars_and_normalize(str_data):
+def filter_chars_and_normalize(str_data: str) -> str:
     """
     Takes a string and returns a copy with all non-alphanumeric
     chars replaced by white space
@@ -31,7 +32,7 @@ def filter_chars_and_normalize(str_data):
     return pattern.sub(" ", str_data).lower()
 
 
-def scan(str_data):
+def scan(str_data: str) -> List[str]:
     """
     Takes a string and scans for words, returning
     a list of words.
@@ -39,7 +40,7 @@ def scan(str_data):
     return str_data.split()
 
 
-def remove_stop_words(word_list):
+def remove_stop_words(word_list: List[str]) -> List[str]:
     """
     Takes a list of words and returns a copy with all stop
     words removed
@@ -51,7 +52,7 @@ def remove_stop_words(word_list):
     return [w for w in word_list if w not in stop_words]
 
 
-def frequencies(word_list):
+def frequencies(word_list: List[str]) -> Dict[str, int]:
     """
     Takes a list of words and returns a dictionary associating
     words with frequencies of occurrence
@@ -65,7 +66,7 @@ def frequencies(word_list):
     return word_freqs
 
 
-def sort(word_freq):
+def sort(word_freq: Dict[str, int]) -> List[Tuple[str, int]]:
     """
     Takes a dictionary of words and their frequencies
     and returns a list of pairs where the entries are
@@ -74,7 +75,7 @@ def sort(word_freq):
     return sorted(word_freq.items(), key=operator.itemgetter(1), reverse=True)
 
 
-def print_all(word_freqs):
+def print_all(word_freqs: List[Tuple[str, int]]) -> None:
     """
     Takes a list of pairs where the entries are sorted by frequency and print them recursively.
     """
@@ -83,7 +84,7 @@ def print_all(word_freqs):
             print(tf[0], " - ", tf[1])
 
 
-def run(sysarg):
+def run(sysarg: str) -> None:
     """
     Function to run all the functions
     """
