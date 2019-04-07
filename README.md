@@ -13,10 +13,11 @@ data by using [Hypothesis](https://hypothesis.works/) and
 - If needed, install and upgrade the `pipenv` command: `pip install pipenv --user`
 - Install the development dependencies `pipenv` command: `pipenv install --dev`
 - Run the program with `pipenv` and `python3` and a small input, `cd` into `example`
-directory and type the following command in terminal
-`pipenv run python3 termfrequency/runtermfreq.py inputs/input.txt`
+  directory and type the following command in terminal
+  `pipenv run python3 termfrequency/runtermfreq.py inputs/input.txt`
 
 ## Monkeytype
+
 `pipenv run monkeytype run <myscript.py>`
 `pipenv run monkeytype stub <module>`
 `pipenv run monkeytype apply <module>`
