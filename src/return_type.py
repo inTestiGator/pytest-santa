@@ -2,6 +2,7 @@
 import sqlite3
 import json
 
+# pylint: disable=W0511
 # TODO: need a function or file to configure the path of database
 # TODO: can it handle types like List[str]?
 
