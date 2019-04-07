@@ -93,9 +93,7 @@ def run(sysarg: str) -> None:
     print_all(
         sort(
             frequencies(
-                remove_stop_words(
-                    scan(filter_chars_and_normalize(read_file(sysarg)))
-                )
+                remove_stop_words(scan(filter_chars_and_normalize(read_file(sysarg))))
             )
         )[0:25]
     )
