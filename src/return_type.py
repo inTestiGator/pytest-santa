@@ -1,29 +1,8 @@
 import sqlite3
 import json
 
-# TODO: need a function or file to configure the path of database
+# TODO: need a function or file to configure the path of database, and module
 # TODO: can it handle types like List[str]?
-
-# def make_query(table, module, qualname, limit):
-#     raw_query = """
-#     SELECT
-#         module, qualname, arg_types, return_type, yield_type
-#     FROM {table}
-#     WHERE
-#         module == ?
-#     """.format(table=table)
-#     values = module
-#     if qualname is not None:
-#         raw_query += " AND qualname LIKE ? || '%'"
-#         values.append(qualname)
-#     raw_query += """
-#     GROUP BY
-#         module, qualname, arg_types, return_type, yield_type
-#     ORDER BY date(created_at) DESC
-#     LIMIT ?
-#     """
-#     values.append(limit)
-#     return raw_query, values
 
 table = "monkeytype_call_traces"
 
@@ -58,3 +37,4 @@ def return_type(function):
 if __name__ == '__main__':
     # return_type("monkeytype_call_traces", "termfrequency")
     return_type(function="\"StopWordManager.is_stop_word\"")
+    return_type(function="\"WordFrequencyManager.sorted\"")
