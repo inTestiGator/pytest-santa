@@ -6,13 +6,11 @@ import json
 # TODO: can it handle types like List[str]?
 
 table = "monkeytype_call_traces"
+dbFilename = "example/monkeytype.sqlite3"  # global for now
 
 
-def return_type(function, module):
-    """The function connects the database and make queries"""
-    dbFilename = "example/monkeytype.sqlite3"
-    query = f'SELECT DISTINCT arg_types from {table} \
-            WHERE qualname == "{function}" and module == "{module}"'
+def connect_database_query(query):
+    """Connect and make query to database"""
     try:
         conn = sqlite3.connect(dbFilename)
         cur = conn.cursor()
@@ -20,23 +18,52 @@ def return_type(function, module):
         row = cur.fetchone()
         if not row:
             conn.commit()
-        dict_row = json.loads(row[0])  # convert the string into dictionary
-        print(dict_row.keys())  # return the parameter
-        types = {}
-        for k, v in dict_row.items():
-            types[k] = v["qualname"]
-        return types  # return the parameter and its type in a dict type
+        return row
     except sqlite3.Error as e:
         print("Database error: %s" % e)
-    except Exception as e:  # pylint: disable=W0703
-        print("Exception in _query: %s" % e)
     finally:
         if conn:
             conn.close()
 
 
+def get_output_type(function, module):
+    """The function connects the database and make queries"""
+    try:
+        query = f'SELECT DISTINCT return_type from {table} \
+                WHERE qualname == "{function}" and module == "{module}"'
+        row = connect_database_query(query)
+        dict_row = json.loads(row[0])  # convert the string into dictionary
+        # print(dict_row.keys())  # return the parameter
+        types = {}
+        for k, v in dict_row.items():
+            print(v["qualname"])
+        return types  # return the parameter and its type in a dict type
+    except Exception as e:  # pylint: disable=W0703
+        print("Exception in _query: %s" % e)
+
+
+def get_input_type(function, module):
+    """The function connects the database and make queries"""
+    try:
+        query = f'SELECT DISTINCT arg_types from {table} \
+                WHERE qualname == "{function}" and module == "{module}"'
+        row = connect_database_query(query)
+        dict_row = json.loads(row[0])  # convert the string into dictionary
+        # print(dict_row.keys())  # return the parameter
+        types = {}
+        for k, v in dict_row.items():
+            types[k] = v["qualname"]
+        return types  # return the parameter and its type in a dict type
+    except Exception as e:  # pylint: disable=W0703
+        print("Exception in _query: %s" % e)
+
+
 if __name__ == "__main__":
     # return_type("monkeytype_call_traces", "termfrequency")
     # types_isstopwords = return_type(function="\"StopWordManager.is_stop_word\"")
-    types_sorted = return_type(function="sort", module="termfrequency.tf_pipeline")
-    print(types_sorted)
+    # types_sorted = get_input_type(function="sort", module="termfrequency.tf_pipeline")
+    # test_return = get_input_type(function="sortedddd", module="termfrequency.tf_pipeline")
+    types_sorted_output = get_output_type(function="StopWordManager.is_stop_word", module="termfrequency.tf_objectoriented")
+    # print(test_return)
+    # print(types_sorted)
+    print(types_sorted_output)
