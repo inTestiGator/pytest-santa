@@ -1,4 +1,5 @@
 import sqlite3
+import json
 
 # TODO: need a function or file to configure the path of database
 # TODO: How to parse the value returned by query.
@@ -27,14 +28,23 @@ import sqlite3
 
 def return_type_short(function):
     table = "monkeytype_call_traces"
-    query = "SELECT arg_types from " + table + " WHERE qualname == " + function
+    # there are usually repeated qualname due to being called multiple times
+    query = "SELECT DISTINCT arg_types from " + table + " WHERE qualname == " + function
+    conn.row_factory = sqlite3.Row
     cur = conn.cursor()
     cur.execute(query)
-    rows = cur.fetchall()
-    # seperate_row = rows[0].split(",")
-    # print the first row
-    print(rows[0])
-    return rows[0]
+    row = cur.fetchone()
+    dict_row = json.loads(row[0])  # convert the string into dictionary
+    print(dict_row.keys())  # return the parameter
+    for k, v in dict_row.items():
+        print(v['qualname'])  # return the type(qualname) itself
+        # for vk, vv in v.items():
+        #     print(vv)  # return the type itself
+        # print(str(k) + str(v))  # return each parameter and its type
+    # print(row[0])
+    # return row[0]
+    # print(v.values())  # this print out the types, however not only the type itself
+    return v['qualname']
 
 
 if __name__ == '__main__':
