@@ -58,7 +58,8 @@ def get_input_type(function, module):
 
 if __name__ == "__main__":
     # types_sorted = get_input_type(function="sort", module="termfrequency.tf_pipeline")
-    types_sorted_output = get_output_type(function="StopWordManager.is_stop_word", module="termfrequency.tf_objectoriented")
+    types_sorted_output = get_output_type(function="StopWordManager.is_stop_word",
+                                          module="termfrequency.tf_objectoriented")
     # print(test_return)
     # print(types_sorted)
     print(types_sorted_output)
