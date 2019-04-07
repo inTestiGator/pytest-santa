@@ -31,13 +31,14 @@ def return_type_short(function):
     cur = conn.cursor()
     cur.execute(query)
     rows = cur.fetchall()
+    # seperate_row = rows[0].split(",")
     # print the first row
     print(rows[0])
     return rows[0]
 
 
 if __name__ == '__main__':
-    dbFilename = "example/termfrequency/monkeytype.sqlite3"
+    dbFilename = "example/monkeytype.sqlite3"
     conn = sqlite3.connect(dbFilename)
     # return_type("monkeytype_call_traces", "termfrequency")
     return_type_short("\"StopWordManager.is_stop_word\"")
