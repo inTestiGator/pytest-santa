@@ -1,3 +1,5 @@
+# **Important**: Do not create a Pull Request without first creating an Issue!!!
+
 ## Status
 **READY/IN DEVELOPMENT/HOLD**
 
@@ -39,4 +41,4 @@ bundle; script/server
 ## Impacted Areas in Application
 List general components of the application that this PR will affect:
 
-* 
+*
