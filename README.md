@@ -3,12 +3,31 @@
 [![Build Status](https://travis-ci.com/inTestiGator/pytest-santa.svg?branch=master)](https://travis-ci.com/inTestiGator/pytest-santa)
 [![codecov](https://codecov.io/gh/inTestiGator/pytest-santa/branch/master/graph/badge.svg)](https://codecov.io/gh/inTestiGator/pytest-santa)
 
-This plugin collects function argument types using
+[pytest-santa](https://intestigator.github.io/pytest-santa/) is a plugin that
+collects function argument types using
 [MonkeyType](https://github.com/Instagram/MonkeyType) and then generates test
-data by using [Hypothesis](https://hypothesis.works/) and
+data by [Hypothesis](https://hypothesis.works/) and
 [hypothesis-jsonschema](https://github.com/Zac-HD/hypothesis-jsonschema).
 
 ## Commands
 
 - If needed, install and upgrade the `pipenv` command: `pip install pipenv --user`
 - Install the development dependencies `pipenv` command: `pipenv install --dev`
+- Run the program with `pipenv` and `python3` and a small input, `cd` into `example`
+  directory and type the following command in terminal
+  `pipenv run python3 termfrequency/runtermfreq.py inputs/input.txt`
+
+## Monkeytype
+
+To create traceback database with monkeytype:
+
+```
+pipenv run monkeytype run <myscript.py>
+```
+
+Optional commands to apply the types to the code
+
+```
+pipenv run monkeytype stub <module>
+pipenv run monkeytype apply <module>
+```
