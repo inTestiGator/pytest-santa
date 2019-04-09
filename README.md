@@ -3,9 +3,10 @@
 [![Build Status](https://travis-ci.com/inTestiGator/pytest-santa.svg?branch=master)](https://travis-ci.com/inTestiGator/pytest-santa)
 [![codecov](https://codecov.io/gh/inTestiGator/pytest-santa/branch/master/graph/badge.svg)](https://codecov.io/gh/inTestiGator/pytest-santa)
 
-This plugin collects function argument types using
+[pytest-santa](https://intestigator.github.io/pytest-santa/) is a plugin that
+collects function argument types using
 [MonkeyType](https://github.com/Instagram/MonkeyType) and then generates test
-data by using [Hypothesis](https://hypothesis.works/) and
+data by [Hypothesis](https://hypothesis.works/) and
 [hypothesis-jsonschema](https://github.com/Zac-HD/hypothesis-jsonschema).
 
 ## Commands
@@ -18,6 +19,15 @@ data by using [Hypothesis](https://hypothesis.works/) and
 
 ## Monkeytype
 
-`pipenv run monkeytype run <myscript.py>`
-`pipenv run monkeytype stub <module>`
-`pipenv run monkeytype apply <module>`
+To create traceback database with monkeytype:
+
+```
+pipenv run monkeytype run <myscript.py>
+```
+
+Optional commands to apply the types to the code
+
+```
+pipenv run monkeytype stub <module>
+pipenv run monkeytype apply <module>
+```
