@@ -1,8 +1,9 @@
 """Run script for termfrequency"""
 # !/usr/bin/env python
 import sys
-from termfrequency.tf_objectoriented import WordFrequencyController
-from termfrequency.tf_pipeline import run
+
+from tf_objectoriented import WordFrequencyController
+from tf_pipeline import run
 
 # Run tf_objectoriented
 WordFrequencyController(sys.argv[1]).run()
