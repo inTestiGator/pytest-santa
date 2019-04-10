@@ -22,12 +22,13 @@ data by [Hypothesis](https://hypothesis.works/) and
 To create traceback database with monkeytype:
 
 ```
-pipenv run monkeytype run <myscript.py>
+pipenv run monkeytype run example/termfrequency/tf_objectoriented.py
 ```
 
 Optional commands to apply the types to the code
 
 ```
-pipenv run monkeytype stub <module>
-pipenv run monkeytype apply <module>
+pipenv run monkeytype stub example.termfrequency.tf_objectoriented
+pipenv run monkeytype apply example.termfrequency.tf_objectoriented
 ```
+To learn more about MonkeyType go to [MonkeyType](https://github.com/Instagram/MonkeyType).
