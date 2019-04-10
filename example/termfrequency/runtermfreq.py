@@ -2,11 +2,12 @@
 # !/usr/bin/env python
 import sys
 
-from tf_objectoriented import WordFrequencyController
-from tf_pipeline import run
+from termfrequency import tf_objectoriented, tf_pipeline
 
-# Run tf_objectoriented
-WordFrequencyController(sys.argv[1]).run()
+if __name__ == '__main__':
 
-# Run tf_pipeline
-run(sys.argv[1])
+    # Run tf_objectoriented
+    tf_objectoriented.WordFrequencyController(sys.argv[1]).run()
+
+    # Run tf_pipeline
+    tf_pipeline.run(sys.argv[1])
