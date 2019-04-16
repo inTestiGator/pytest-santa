@@ -16,7 +16,8 @@ data by [Hypothesis](https://hypothesis.works/) and
 
 ## Monkeytype
 
-To create traceback database with monkeytype first you need to be in the example directory by using: `cd example`
+To create traceback database with monkeytype first you need to be in the example
+directory by using: `cd example`
 
 Then run the following:
 
@@ -30,4 +31,5 @@ Optional commands to apply the types to the code:
 pipenv run monkeytype stub termfrequency.tf_objectoriented
 pipenv run monkeytype apply termfrequency.tf_objectoriented
 ```
+
 To learn more about MonkeyType go to [MonkeyType](https://github.com/Instagram/MonkeyType).
