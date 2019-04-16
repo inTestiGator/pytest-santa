@@ -42,7 +42,7 @@ All of the following subsections must be adhered to:
 
 ### Code style
 
-All of the code in the repository is written in Python and must conform to [Pylint](https://github.com/PyCQA/pylint), [Flake8](https://github.com/PyCQA/flake8), and [Black](https://github.com/ambv/black) so that all code is in a specific form.
+All of the code in the repository is written in Python and must conform to [Pylint](https://github.com/PyCQA/pylint), [Flake8](https://github.com/PyCQA/flake8), and [Black](https://github.com/ambv/black) so that all code is in a specific format.
 
 ### Testing
 
