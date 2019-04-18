@@ -13,11 +13,8 @@ data by [Hypothesis](https://hypothesis.works/) and
 
 - If needed, install and upgrade the `pipenv` command: `pip install pipenv --user`
 - Install the development dependencies `pipenv` command: `pipenv install --dev`
-- To run test for the `src`:
-`pipenv run pytest tests`
-- To run test for the example:
-`pipenv run pytest example/tests`
-
+- To run test for the `src`: `pipenv run pytest tests`
+- To run test for the example: `pipenv run pytest example/tests`
 
 ## Monkeytype
 
