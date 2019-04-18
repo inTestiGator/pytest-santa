@@ -32,4 +32,5 @@ pipenv run monkeytype stub termfrequency.tf_objectoriented
 pipenv run monkeytype apply termfrequency.tf_objectoriented
 ```
 
-To learn more about MonkeyType please go to [MonkeyType](https://github.com/Instagram/MonkeyType) via this link.
+To learn more about MonkeyType please go to
+[MonkeyType](https://github.com/Instagram/MonkeyType) via this link.
