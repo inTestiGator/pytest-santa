@@ -63,7 +63,9 @@ def test_WordFrequencyManager_info():
 
 def test_WordFrequencyController_run():
     """ Checks that the run() works by asserting the output equals to the expected"""
-    frequency_controller = tf_objectoriented.WordFrequencyController("example/inputs/input.txt")
+    frequency_controller = tf_objectoriented.WordFrequencyController(
+        "example/inputs/input.txt"
+    )
     word_freqs = frequency_controller.run()
     assert word_freqs == [
         ("live", 2),
