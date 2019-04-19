@@ -51,7 +51,7 @@ class StopWordManager(TFExercise):
     """ Models the stop word filter """
 
     def __init__(self) -> None:
-        with open("stopwords/stop_words.txt") as f:
+        with open("example/stopwords/stop_words.txt") as f:
             self._stop_words = f.read().split(",")
         # add single-letter words
         self._stop_words.extend(list(string.ascii_lowercase))
