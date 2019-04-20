@@ -1,6 +1,5 @@
 """Test cases for the object-oriented implementation"""
 
-import subprocess
 import pytest
 
 from termfrequency import tf_objectoriented
@@ -8,7 +7,7 @@ from termfrequency import tf_objectoriented
 
 def test_read_file_populates_data_0():
     """ Checks that the reading of the small text file works """
-    storage_manager = tf_objectoriented.DataStorageManager("inputs/input.txt")
+    storage_manager = tf_objectoriented.DataStorageManager("example/inputs/input.txt")
     word_list = storage_manager.words()
     assert word_list is not None
     assert len(word_list) == 12
@@ -16,7 +15,7 @@ def test_read_file_populates_data_0():
 
 def test_DataStorageManager_return_info():
     """ Checks that the info() works """
-    storage_manager = tf_objectoriented.DataStorageManager("inputs/input.txt")
+    storage_manager = tf_objectoriented.DataStorageManager("example/inputs/input.txt")
     word = storage_manager.info()
     assert word == "DataStorageManager: My major data structure is a str"
 
@@ -64,7 +63,9 @@ def test_WordFrequencyManager_info():
 
 def test_WordFrequencyController_run():
     """ Checks that the run() works by asserting the output equals to the expected"""
-    frequency_controller = tf_objectoriented.WordFrequencyController("inputs/input.txt")
+    frequency_controller = tf_objectoriented.WordFrequencyController(
+        "example/inputs/input.txt"
+    )
     word_freqs = frequency_controller.run()
     assert word_freqs == [
         ("live", 2),
@@ -76,21 +77,6 @@ def test_WordFrequencyController_run():
         ("lions", 1),
         ("africa", 1),
     ]
-
-
-def test_main():
-    """Capture program's output to check if it's right"""
-    result = subprocess.run(
-        ["python3", "termfrequency/runtermfreq.py", "inputs/input.txt"],
-        stdout=subprocess.PIPE,
-    )
-    output = result.stdout.decode("utf-8")
-    expected = (
-        "live  -  2\nmostly  -  2\nwhite  -  1\n"
-        "tigers  -  1\nindia  -  1\nwild  -  1\n"
-        "lions  -  1\nafrica  -  1\n"
-    )
-    assert output == expected
 
 
 @pytest.mark.parametrize(

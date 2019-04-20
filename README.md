@@ -13,6 +13,8 @@ data by [Hypothesis](https://hypothesis.works/) and
 
 - If needed, install and upgrade the `pipenv` command: `pip install pipenv --user`
 - Install the development dependencies `pipenv` command: `pipenv install --dev`
+- To run test for the `src`: `pipenv run pytest tests`
+- To run test for the example: `pipenv run pytest example/tests`
 
 ## Monkeytype
 
@@ -32,4 +34,5 @@ pipenv run monkeytype stub termfrequency.tf_objectoriented
 pipenv run monkeytype apply termfrequency.tf_objectoriented
 ```
 
-To learn more about MonkeyType please go to [MonkeyType](https://github.com/Instagram/MonkeyType) via this link.
+To learn more about MonkeyType please go to
+[MonkeyType](https://github.com/Instagram/MonkeyType) via this link.
