@@ -40,7 +40,7 @@ def create_st(type_list):
             pass
         elif t == 'type':
             pass
-
+    return st_list
 
 if __name__ == '__main__':
     input_type = {"var" : "int", "boo" : "int"}
