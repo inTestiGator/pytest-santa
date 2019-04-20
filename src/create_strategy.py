@@ -22,8 +22,6 @@ def create_st(type_list):
             st_list.append(st.floats())
         elif t == "bool":
             st_list.append(st.booleans())
-        elif t == "byte":
-            st_list.append(st.integers())
         # TODO: Enable create_st for complex types
         # elif t == "object":
         #     pass
