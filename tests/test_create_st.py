@@ -11,6 +11,14 @@ def test_read_type():
     assert output == ['int', 'int']
 
 
+def test_read_type_exception_no_type_given():
+    # TODO: try
+    input_type = {}
+    with pytest.raises(Exception) as e:
+        create_strategy.read_type(input_type)
+    assert str(e.value) == "No type given"
+
+
 @pytest.mark.parametrize(
     "input_type, expected_output",
     [(['int', 'int'], [st.integers(), st.integers()]),

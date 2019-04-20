@@ -4,10 +4,9 @@ import hypothesis.strategies as st
 
 def read_type(type_dict):
     """ Read type from the return types and convert into a list"""
-    if type is None:  # TODO: will be a exception handling here.
-        print("There is no type passed in")
-    else:
-        type_list = list(type_dict.values())
+    if not type_dict:
+        raise Exception("No type given")
+    type_list = list(type_dict.values())
     return type_list
 
 
