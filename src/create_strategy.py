@@ -24,18 +24,19 @@ def create_st(type_list):
             st_list.append(st.booleans())
         elif t == "byte":
             st_list.append(st.integers())
-        elif t == "object":
-            pass
-        elif t == "List":
-            pass
-        elif t == "Dict":
-            pass
-        elif t == "Tuple":
-            pass
-        elif t == "Union":
-            pass
-        elif t == "Set":
-            pass
-        elif t == "type":
-            pass
+        # TODO: Enable create_st for complex types
+        # elif t == "object":
+        #     pass
+        # elif t == "List":
+        #     pass
+        # elif t == "Dict":
+        #     pass
+        # elif t == "Tuple":
+        #     pass
+        # elif t == "Union":
+        #     pass
+        # elif t == "Set":
+        #     pass
+        # elif t == "type":
+        #     pass
     return st_list

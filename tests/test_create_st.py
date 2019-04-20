@@ -12,7 +12,7 @@ def test_read_type():
 
 
 def test_read_type_exception_no_type_given():
-    # TODO: try
+    """ Test read_type can handle type empty"""
     input_type = {}
     with pytest.raises(Exception) as e:
         create_strategy.read_type(input_type)
