@@ -33,7 +33,7 @@ script:
   - pipenv run black **/*.py --check
   - pipenv run flake8 **/*.py
   - pipenv run pylint **/*.py
-  - pipenv run pytest example/tests
+  - pipenv run pytest tests
   - mdl README.md
 
 # report coverage information to CodeCov
