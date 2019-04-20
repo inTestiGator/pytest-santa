@@ -1,7 +1,7 @@
 """ Test for create_st """
 import pytest
-from src import create_strategy
 import hypothesis.strategies as st
+from src import create_strategy
 
 
 def test_read_type():
