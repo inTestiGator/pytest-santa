@@ -6,8 +6,7 @@
 [pytest-santa](https://intestigator.github.io/pytest-santa/) is a plugin that
 collects function argument types using
 [MonkeyType](https://github.com/Instagram/MonkeyType) and then generates test
-data by [Hypothesis](https://hypothesis.works/) and
-[hypothesis-jsonschema](https://github.com/Zac-HD/hypothesis-jsonschema).
+data by [Hypothesis](https://hypothesis.works/).
 
 ## Commands
 
