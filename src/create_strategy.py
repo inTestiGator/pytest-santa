@@ -1,5 +1,4 @@
-""" Read from return_type and create statement that compatible with @given()"""
-# from hypothesis import given
+""" Read from return_type and create search strategies that compatible with @given()"""
 import hypothesis.strategies as st
 
 
@@ -41,8 +40,3 @@ def create_st(type_list):
         elif t == 'type':
             pass
     return st_list
-
-if __name__ == '__main__':
-    input_type = {"var" : "int", "boo" : "int"}
-    output = read_type(input_type)
-    assert output == ['int', 'int']
