@@ -13,18 +13,19 @@ def read_type(type_dict):
 
 
 def create_st(type_list):
-    """ Create the compatible kwargs for strategies"""
+    """ Create the compatible arguments for strategies"""
+    st_list = []
     for t in type_list:
         if t == 'int':
-            pass
+            st_list.append(st.integers())
         elif t == 'str':
-            pass
+            st_list.append(st.text())
         elif t == 'float':
-            pass
+            st_list.append(st.floats())
         elif t == 'bool':
-            pass
+            st_list.append(st.booleans())
         elif t == 'byte':
-            pass
+            st_list.append(st.integers())
         elif t == 'object':
             pass
         elif t == 'List':
