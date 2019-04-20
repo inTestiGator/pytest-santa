@@ -14,28 +14,28 @@ def create_st(type_list):
     """ Create the compatible arguments for strategies"""
     st_list = []
     for t in type_list:
-        if t == 'int':
+        if t == "int":
             st_list.append(st.integers())
-        elif t == 'str':
+        elif t == "str":
             st_list.append(st.text())
-        elif t == 'float':
+        elif t == "float":
             st_list.append(st.floats())
-        elif t == 'bool':
+        elif t == "bool":
             st_list.append(st.booleans())
-        elif t == 'byte':
+        elif t == "byte":
             st_list.append(st.integers())
-        elif t == 'object':
+        elif t == "object":
             pass
-        elif t == 'List':
+        elif t == "List":
             pass
-        elif t == 'Dict':
+        elif t == "Dict":
             pass
-        elif t == 'Tuple':
+        elif t == "Tuple":
             pass
-        elif t == 'Union':
+        elif t == "Union":
             pass
-        elif t == 'Set':
+        elif t == "Set":
             pass
-        elif t == 'type':
+        elif t == "type":
             pass
     return st_list
