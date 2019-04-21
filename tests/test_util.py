@@ -1,13 +1,13 @@
 """ Test for create_st """
 import pytest
 import hypothesis.strategies as st
-from src import create_strategy
+from src import util
 
 
 def test_read_type():
     """ Test if read_type can create list of types correctly from the dict"""
     input_type = {"var": "int", "boo": "int"}
-    output = create_strategy.read_type(input_type)
+    output = util.read_type(input_type)
     assert output == ["int", "int"]
 
 
@@ -15,7 +15,7 @@ def test_read_type_exception_no_type_given():
     """ Test read_type can handle type empty"""
     input_type = {}
     with pytest.raises(Exception) as e:
-        create_strategy.read_type(input_type)
+        util.read_type(input_type)
     assert str(e.value) == "No type given"
 
 
@@ -34,5 +34,12 @@ def test_read_type_exception_no_type_given():
 )
 def test_create_st(input_type, expected_output):
     """ Test if create_st can create a list of strategy from the given list of types"""
-    output = create_strategy.create_st(input_type)
+    output = util.create_st(input_type)
     assert output == expected_output
+
+
+#     types_sorted_output = get_output_type(
+#         function="StopWordManager.is_stop_word",
+#         module="termfrequency.tf_objectoriented",
+#     )
+#     print(types_sorted_output)
