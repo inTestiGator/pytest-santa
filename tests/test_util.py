@@ -38,6 +38,7 @@ def test_create_st(input_type, expected_output):
     assert output == expected_output
 
 
+# TODO: test case for return types
 #     types_sorted_output = get_output_type(
 #         function="StopWordManager.is_stop_word",
 #         module="termfrequency.tf_objectoriented",
