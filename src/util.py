@@ -6,17 +6,28 @@ import sqlite3
 import json
 import hypothesis.strategies as st
 
-# TODO: need a function or file to configure the path of database
-# TODO: can it handle types like List[str]?
+# TODO: Can not handle complex types like List[str]?
 
-table = "monkeytype_call_traces"
-dbFilename = "example/monkeytype.sqlite3"  # global for now
+DB_TABLE = "monkeytype_call_traces"
+
+
+def set_path(db_path):
+    """ Enable user to set the path to the monkeytype database """
+    # pylint: disable = W0601
+    global DB_FILENAME
+    DB_FILENAME = db_path
+
+
+def generate_st(function, module):
+    """ Main function to generate search strategies """
+    search_strategies = create_st(read_type(get_input_type(function, module)))
+    return search_strategies
 
 
 def connect_database_query(query):
     """Connects to the database and passes a query"""
     try:
-        conn = sqlite3.connect(dbFilename)
+        conn = sqlite3.connect(DB_FILENAME)
         cur = conn.cursor()
         cur.execute(query)
         row = cur.fetchone()
@@ -33,7 +44,7 @@ def connect_database_query(query):
 def get_output_type(function, module):
     """Collects all distinct return types found in the database"""
     try:
-        query = f'SELECT DISTINCT return_type from {table} \
+        query = f'SELECT DISTINCT return_type from {DB_TABLE} \
                 WHERE qualname == "{function}" and module == "{module}"'
         row = connect_database_query(query)
         dict_row = json.loads(row[0])  # convert the string into dictionary
@@ -47,7 +58,7 @@ def get_output_type(function, module):
 def get_input_type(function, module):
     """The function connects the database and make queries"""
     try:
-        query = f'SELECT DISTINCT arg_types from {table} \
+        query = f'SELECT DISTINCT arg_types from {DB_TABLE} \
                 WHERE qualname == "{function}" and module == "{module}"'
         row = connect_database_query(query)
         dict_row = json.loads(row[0])  # convert the string into dictionary
