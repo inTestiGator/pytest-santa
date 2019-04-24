@@ -6,10 +6,9 @@ import sqlite3
 import json
 import hypothesis.strategies as st
 
-# TODO: need a function or file to configure the path of database
-# TODO: can it handle types like List[str]?
+# TODO: Can not handle complex types like List[str]?
 
-table = "monkeytype_call_traces"
+DB_TABLE = "monkeytype_call_traces"
 
 
 def set_path(db_path):
@@ -17,7 +16,6 @@ def set_path(db_path):
     # pylint: disable = W0601
     global dbFilename
     dbFilename = db_path
-    return dbFilename
 
 
 def generate_st(function, module):
@@ -46,7 +44,7 @@ def connect_database_query(query):
 def get_output_type(function, module):
     """Collects all distinct return types found in the database"""
     try:
-        query = f'SELECT DISTINCT return_type from {table} \
+        query = f'SELECT DISTINCT return_type from {DB_TABLE} \
                 WHERE qualname == "{function}" and module == "{module}"'
         row = connect_database_query(query)
         dict_row = json.loads(row[0])  # convert the string into dictionary
@@ -60,7 +58,7 @@ def get_output_type(function, module):
 def get_input_type(function, module):
     """The function connects the database and make queries"""
     try:
-        query = f'SELECT DISTINCT arg_types from {table} \
+        query = f'SELECT DISTINCT arg_types from {DB_TABLE} \
                 WHERE qualname == "{function}" and module == "{module}"'
         row = connect_database_query(query)
         dict_row = json.loads(row[0])  # convert the string into dictionary
