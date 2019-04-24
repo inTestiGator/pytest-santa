@@ -4,24 +4,26 @@
 from hypothesis import given
 import hypothesis.strategies as st
 from src import util
+import simpleadd
 
-
-table = "monkeytype_call_traces"
-dbFilename = "example/monkeytype.sqlite3"
-
-type_add_output = get_output_type(
-         #function="simpleadd.",
-        # module="termfrequency.tf_objectoriented",
-     )
 
 # TODO:
-# use monkey type to run the example first to create database
-# get_output_type
+# get_input_type
 # read_type
 # create_st
 # use * to pass in the given decorator
 # specify how many parameters needed in the test case like below
 
-@given(*stfunc_both())
+util.set_path("monkeytype.sqlite3")
+
+
+test_st = util.generate_st(
+    function="add",
+    module="simpleadd",
+)
+
+
+@given(*test_st)
 def test_add(a, b):
-    assert add(a, b) == a + b
+    """ use tool to test add function """
+    assert simpleadd.add(a, b) == a + b
