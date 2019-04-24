@@ -10,7 +10,20 @@ import hypothesis.strategies as st
 # TODO: can it handle types like List[str]?
 
 table = "monkeytype_call_traces"
-dbFilename = "example/monkeytype.sqlite3"  # global for now
+
+
+def set_path(db_path):
+    """ Enable user to set the path to the monkeytype database """
+    # pylint: disable = W0601
+    global dbFilename
+    dbFilename = db_path
+    return dbFilename
+
+
+def generate_st(function, module):
+    """ Main function to generate search strategies """
+    search_strategies = create_st(read_type(get_input_type(function, module)))
+    return search_strategies
 
 
 def connect_database_query(query):
