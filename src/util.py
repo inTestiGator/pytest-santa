@@ -14,8 +14,8 @@ DB_TABLE = "monkeytype_call_traces"
 def set_path(db_path):
     """ Enable user to set the path to the monkeytype database """
     # pylint: disable = W0601
-    global dbFilename
-    dbFilename = db_path
+    global DB_FILENAME
+    DB_FILENAME = db_path
 
 
 def generate_st(function, module):
@@ -27,7 +27,7 @@ def generate_st(function, module):
 def connect_database_query(query):
     """Connects to the database and passes a query"""
     try:
-        conn = sqlite3.connect(dbFilename)
+        conn = sqlite3.connect(DB_FILENAME)
         cur = conn.cursor()
         cur.execute(query)
         row = cur.fetchone()
