@@ -8,10 +8,7 @@ from example_src import simpleadd
 util.set_path("monkeytype.sqlite3")
 
 
-test_st = util.generate_st(
-    function="add",
-    module="simpleadd",
-)
+test_st = util.generate_st(function="add", module="simpleadd")
 
 
 @given(*test_st)
