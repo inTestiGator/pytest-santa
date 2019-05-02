@@ -2,7 +2,7 @@
 
 import pytest
 
-from termfrequency import tf_objectoriented
+from example_src import tf_objectoriented
 
 
 def test_read_file_populates_data_0():

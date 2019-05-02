@@ -2,7 +2,7 @@
 # !/usr/bin/env python
 import sys
 
-from termfrequency import tf_objectoriented, tf_pipeline
+from example_src import tf_objectoriented, tf_pipeline
 
 if __name__ == "__main__":
 
