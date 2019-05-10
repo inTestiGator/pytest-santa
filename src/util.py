@@ -16,6 +16,7 @@ def set_path(db_path):
     # pylint: disable = W0601
     global DB_FILENAME
     DB_FILENAME = db_path
+    return DB_FILENAME
 
 
 def generate_st(function, module):

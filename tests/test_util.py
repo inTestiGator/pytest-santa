@@ -4,6 +4,16 @@ import hypothesis.strategies as st
 from src import util
 
 
+def test_connect_database_query():
+    pass
+
+
+def test_set_path():
+    """ Test the set path works"""
+    expected_path = util.set_path("TEST_PATH")
+    assert expected_path == "TEST_PATH"
+
+
 def test_read_type():
     """ Test if read_type can create list of types correctly from the dict"""
     input_type = {"var": "int", "boo": "int"}
